@@ -1,1 +1,16 @@
-/Users/lubosq/Documents/JAVA2025/projet_pvz/src/main/java/com/epf/Main.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/Main.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/MainApp.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/TestDbConnection.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/api/controller/PlantController.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/api/controller/TestController.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/api/dto/PlantDTO.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/api/mapper/PlantDTOMapper.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/config/DatabaseConfig.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/config/WebAppInitializer.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/config/WebConfig.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/core/model/Plant.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/core/service/PlantService.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/persistance/dao/PlantDAO.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/persistance/entity/PlantEntity.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/persistance/mapper/PlantEntityMapper.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/persistance/repository/PlantRepository.java
