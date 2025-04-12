@@ -51,7 +51,7 @@ public class PlantController {
      * Récupère une plante par son ID.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<PlantDTO> getPlantById(@PathVariable int id) {
+    public ResponseEntity<PlantDTO> getPlantById(@PathVariable("id") int id) {
         Optional<Plant> plantOpt = plantService.getPlantById(id);
         return plantOpt.map(plant -> ResponseEntity.ok(PlantDTOMapper.toDTO(plant)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
@@ -76,7 +76,7 @@ public class PlantController {
      * Met à jour une plante existante.
      */
     @PutMapping("/{id}")
-    public ResponseEntity<PlantDTO> updatePlant(@PathVariable int id, @RequestBody PlantDTO plantDTO) {
+    public ResponseEntity<PlantDTO> updatePlant(@PathVariable("id") int id, @RequestBody PlantDTO plantDTO) {
         Plant plant = PlantDTOMapper.toModel(plantDTO);
 
         if (!plantService.validatePlantFormat(plant)) {
@@ -96,7 +96,7 @@ public class PlantController {
      * Supprime une plante.
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePlant(@PathVariable int id) {
+    public ResponseEntity<Void> deletePlant(@PathVariable("id") int id) {
         if (plantService.getPlantById(id).isEmpty()) {
             return ResponseEntity.notFound().build();
         }
