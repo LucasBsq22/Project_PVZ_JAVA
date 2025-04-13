@@ -1,6 +1,8 @@
-// dans com.oxyl.coursepfback.persistance.entity.ZombieEntity.java
 package com.oxyl.coursepfback.persistance.entity;
 
+/**
+ * Entité qui représente une ligne de la table Zombie dans la base de données.
+ */
 public class ZombieEntity {
     private Integer idZombie;
     private String nom;
@@ -11,7 +13,11 @@ public class ZombieEntity {
     private String cheminImage;
     private Integer idMap;
 
-    // Getters and Setters
+    // Constructeur par défaut
+    public ZombieEntity() {
+    }
+
+    // Getters et Setters
     public Integer getIdZombie() {
         return idZombie;
     }

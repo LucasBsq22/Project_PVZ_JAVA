@@ -1,4 +1,3 @@
-// dans com.oxyl.coursepfback.core.model.Zombie.java
 package com.oxyl.coursepfback.core.model;
 
 public class Zombie {

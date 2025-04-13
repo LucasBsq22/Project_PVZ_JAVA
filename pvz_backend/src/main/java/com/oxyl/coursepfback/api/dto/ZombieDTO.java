@@ -1,6 +1,8 @@
-// dans com.oxyl.coursepfback.api.dto.ZombieDTO.java
 package com.oxyl.coursepfback.api.dto;
 
+/**
+ * DTO pour les zombies, utilisé pour la communication avec le frontend.
+ */
 public class ZombieDTO {
     private Integer id_zombie;
     private String nom;
@@ -11,7 +13,11 @@ public class ZombieDTO {
     private String chemin_image;
     private Integer id_map;
 
-    // Getters and Setters
+    // Constructeur par défaut
+    public ZombieDTO() {
+    }
+
+    // Getters et Setters
     public Integer getId_zombie() {
         return id_zombie;
     }

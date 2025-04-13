@@ -1,44 +1,52 @@
-// dans com.oxyl.coursepfback.persistance.mapper.ZombieEntityMapper.java
 package com.oxyl.coursepfback.persistance.mapper;
 
-import com.oxyl.coursepfback.core.model.Zombie;
 import com.oxyl.coursepfback.persistance.entity.ZombieEntity;
+import com.oxyl.coursepfback.core.model.Zombie;
 
+/**
+ * Mapper pour convertir entre ZombieEntity et Zombie.
+ */
 public class ZombieEntityMapper {
 
-    public static ZombieEntity toEntity(Zombie zombie) {
-        if (zombie == null) {
-            return null;
-        }
-
-        ZombieEntity entity = new ZombieEntity();
-        entity.setIdZombie(zombie.getIdZombie());
-        entity.setNom(zombie.getNom());
-        entity.setPointDeVie(zombie.getPointDeVie());
-        entity.setAttaqueParSeconde(zombie.getAttaqueParSeconde());
-        entity.setDegatAttaque(zombie.getDegatAttaque());
-        entity.setVitesseDeDeplacement(zombie.getVitesseDeDeplacement());
-        entity.setCheminImage(zombie.getCheminImage());
-        entity.setIdMap(zombie.getIdMap());
-
-        return entity;
-    }
-
+    /**
+     * Convertit une entité ZombieEntity en modèle Zombie.
+     */
     public static Zombie toModel(ZombieEntity entity) {
         if (entity == null) {
             return null;
         }
 
-        Zombie zombie = new Zombie();
-        zombie.setIdZombie(entity.getIdZombie());
-        zombie.setNom(entity.getNom());
-        zombie.setPointDeVie(entity.getPointDeVie());
-        zombie.setAttaqueParSeconde(entity.getAttaqueParSeconde());
-        zombie.setDegatAttaque(entity.getDegatAttaque());
-        zombie.setVitesseDeDeplacement(entity.getVitesseDeDeplacement());
-        zombie.setCheminImage(entity.getCheminImage());
-        zombie.setIdMap(entity.getIdMap());
+        Zombie model = new Zombie();
+        model.setIdZombie(entity.getIdZombie());
+        model.setNom(entity.getNom());
+        model.setPointDeVie(entity.getPointDeVie());
+        model.setAttaqueParSeconde(entity.getAttaqueParSeconde());
+        model.setDegatAttaque(entity.getDegatAttaque());
+        model.setVitesseDeDeplacement(entity.getVitesseDeDeplacement());
+        model.setCheminImage(entity.getCheminImage());
+        model.setIdMap(entity.getIdMap());
 
-        return zombie;
+        return model;
+    }
+
+    /**
+     * Convertit un modèle Zombie en entité ZombieEntity.
+     */
+    public static ZombieEntity toEntity(Zombie model) {
+        if (model == null) {
+            return null;
+        }
+
+        ZombieEntity entity = new ZombieEntity();
+        entity.setIdZombie(model.getIdZombie());
+        entity.setNom(model.getNom());
+        entity.setPointDeVie(model.getPointDeVie());
+        entity.setAttaqueParSeconde(model.getAttaqueParSeconde());
+        entity.setDegatAttaque(model.getDegatAttaque());
+        entity.setVitesseDeDeplacement(model.getVitesseDeDeplacement());
+        entity.setCheminImage(model.getCheminImage());
+        entity.setIdMap(model.getIdMap());
+
+        return entity;
     }
 }

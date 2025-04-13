@@ -16,7 +16,7 @@
 /Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/core/service/PlantService.java
 /Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/core/service/ZombieService.java
 /Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/persistance/dao/PlantDAO.java
-/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/persistance/dao/ZombieDao.java
+/Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/persistance/dao/ZombieDAO.java
 /Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/persistance/entity/PlantEntity.java
 /Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/persistance/entity/ZombieEntity.java
 /Users/lubosq/Documents/JAVA2025/projet_pvz/pvz_backend/src/main/java/com/oxyl/coursepfback/persistance/mapper/PlantEntityMapper.java

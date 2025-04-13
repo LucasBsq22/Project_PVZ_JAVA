@@ -1,106 +1,76 @@
-// dans com.oxyl.coursepfback.persistance.repository.ZombieRepository.java
 package com.oxyl.coursepfback.persistance.repository;
 
-import com.oxyl.coursepfback.persistance.dao.ZombieDao;
+import com.oxyl.coursepfback.core.model.Zombie;
+import com.oxyl.coursepfback.persistance.dao.ZombieDAO;
 import com.oxyl.coursepfback.persistance.entity.ZombieEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import com.oxyl.coursepfback.persistance.mapper.ZombieEntityMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
+/**
+ * Repository pour les zombies.
+ * Fait le lien entre le domaine métier et la couche d'accès aux données.
+ */
 @Repository
-public class ZombieRepository implements ZombieDao {
+public class ZombieRepository {
 
-    private final JdbcTemplate jdbcTemplate;
+    private final ZombieDAO zombieDAO;
 
-    @Autowired
-    public ZombieRepository(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    public ZombieRepository(ZombieDAO zombieDAO) {
+        this.zombieDAO = zombieDAO;
     }
 
-    private final RowMapper<ZombieEntity> rowMapper = (ResultSet rs, int rowNum) -> {
-        ZombieEntity zombie = new ZombieEntity();
-        zombie.setIdZombie(rs.getInt("id_zombie"));
-        zombie.setNom(rs.getString("nom"));
-        zombie.setPointDeVie(rs.getInt("point_de_vie"));
-        zombie.setAttaqueParSeconde(rs.getDouble("attaque_par_seconde"));
-        zombie.setDegatAttaque(rs.getInt("degat_attaque"));
-        zombie.setVitesseDeDeplacement(rs.getDouble("vitesse_de_deplacement"));
-        zombie.setCheminImage(rs.getString("chemin_image"));
-        zombie.setIdMap(rs.getInt("id_map"));
-        return zombie;
-    };
-
-    @Override
-    public List<ZombieEntity> findAll() {
-        String sql = "SELECT * FROM Zombie";
-        return jdbcTemplate.query(sql, rowMapper);
+    /**
+     * Récupère tous les zombies.
+     */
+    public List<Zombie> findAll() {
+        List<ZombieEntity> entities = zombieDAO.findAll();
+        return entities.stream()
+                .map(ZombieEntityMapper::toModel)
+                .collect(Collectors.toList());
     }
 
-    @Override
-    public ZombieEntity findById(Integer id) {
-        String sql = "SELECT * FROM Zombie WHERE id_zombie = ?";
-        try {
-            return jdbcTemplate.queryForObject(sql, rowMapper, id);
-        } catch (Exception e) {
-            return null;
+    /**
+     * Récupère un zombie par son ID.
+     */
+    public Optional<Zombie> findById(int id) {
+        Optional<ZombieEntity> entityOpt = zombieDAO.findById(id);
+        return entityOpt.map(ZombieEntityMapper::toModel);
+    }
+
+    /**
+     * Récupère les zombies par ID de map.
+     */
+    public List<Zombie> findByMapId(int mapId) {
+        List<ZombieEntity> entities = zombieDAO.findByMapId(mapId);
+        return entities.stream()
+                .map(ZombieEntityMapper::toModel)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Sauvegarde un zombie (création ou mise à jour).
+     */
+    public Zombie save(Zombie zombie) {
+        ZombieEntity entity = ZombieEntityMapper.toEntity(zombie);
+        ZombieEntity savedEntity;
+
+        if (zombie.getIdZombie() == null) {
+            savedEntity = zombieDAO.insert(entity);
+        } else {
+            savedEntity = zombieDAO.update(entity);
         }
+
+        return ZombieEntityMapper.toModel(savedEntity);
     }
 
-    @Override
-    public ZombieEntity save(ZombieEntity zombie) {
-        String sql = "INSERT INTO Zombie (nom, point_de_vie, attaque_par_seconde, degat_attaque, vitesse_de_deplacement, chemin_image, id_map) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-        jdbcTemplate.update(sql,
-                zombie.getNom(),
-                zombie.getPointDeVie(),
-                zombie.getAttaqueParSeconde(),
-                zombie.getDegatAttaque(),
-                zombie.getVitesseDeDeplacement(),
-                zombie.getCheminImage(),
-                zombie.getIdMap());
-
-        // Récupération de l'ID généré
-        Integer id = jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
-        zombie.setIdZombie(id);
-
-        return zombie;
-    }
-
-    @Override
-    public ZombieEntity update(ZombieEntity zombie) {
-        String sql = "UPDATE Zombie SET nom = ?, point_de_vie = ?, attaque_par_seconde = ?, " +
-                "degat_attaque = ?, vitesse_de_deplacement = ?, chemin_image = ?, id_map = ? " +
-                "WHERE id_zombie = ?";
-
-        int rowsAffected = jdbcTemplate.update(sql,
-                zombie.getNom(),
-                zombie.getPointDeVie(),
-                zombie.getAttaqueParSeconde(),
-                zombie.getDegatAttaque(),
-                zombie.getVitesseDeDeplacement(),
-                zombie.getCheminImage(),
-                zombie.getIdMap(),
-                zombie.getIdZombie());
-
-        return rowsAffected > 0 ? zombie : null;
-    }
-
-    @Override
-    public boolean delete(Integer id) {
-        String sql = "DELETE FROM Zombie WHERE id_zombie = ?";
-        int rowsAffected = jdbcTemplate.update(sql, id);
-        return rowsAffected > 0;
-    }
-
-    @Override
-    public List<ZombieEntity> findByMapId(Integer mapId) {
-        String sql = "SELECT * FROM Zombie WHERE id_map = ?";
-        return jdbcTemplate.query(sql, rowMapper, mapId);
+    /**
+     * Supprime un zombie par son ID.
+     */
+    public boolean deleteById(int id) {
+        return zombieDAO.deleteById(id);
     }
 }
