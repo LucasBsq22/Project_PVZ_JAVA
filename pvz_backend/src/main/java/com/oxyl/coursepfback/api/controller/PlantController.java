@@ -27,15 +27,17 @@ public class PlantController {
     /**
      * Endpoint de validation du format.
      */
-    @PostMapping("/validation")
-    public ResponseEntity<String> validatePlantFormat(@RequestBody PlantDTO plantDTO) {
-        Plant plant = PlantDTOMapper.toModel(plantDTO);
-        if (plantService.validatePlantFormat(plant)) {
-            return ResponseEntity.ok("Format de plante valide");
-        } else {
-            return ResponseEntity.badRequest().body("Format de plante invalide");
-        }
-    }
+//    @GetMapping("/validation")
+//    public ResponseEntity<String> validateAllPlantsFromDB() {
+//        List<Plant> plants = plantService.getAllPlants();
+//        for (Plant plant : plants) {
+//            if (!plantService.validatePlantFormat(plant)) {
+//                return ResponseEntity.badRequest().body("Certaines plantes ont un format invalide");
+//            }
+//        }
+//        return ResponseEntity.ok("Toutes les plantes sont valides");
+//    }
+
 
     /**
      * Récupère toutes les plantes.
@@ -77,18 +79,30 @@ public class PlantController {
      */
     @PutMapping("/{id}")
     public ResponseEntity<PlantDTO> updatePlant(@PathVariable("id") int id, @RequestBody PlantDTO plantDTO) {
-        Plant plant = PlantDTOMapper.toModel(plantDTO);
+        // Récupérer d'abord la plante existante
+        Optional<Plant> existingPlantOpt = plantService.getPlantById(id);
 
-        if (!plantService.validatePlantFormat(plant)) {
-            return ResponseEntity.badRequest().build();
-        }
-
-        if (plantService.getPlantById(id).isEmpty()) {
+        if (existingPlantOpt.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
-        plant.setIdPlante(id);
-        Plant updatedPlant = plantService.savePlant(plant);
+        Plant existingPlant = existingPlantOpt.get();
+
+        // Mettre à jour seulement les champs non-null du DTO reçu
+        if (plantDTO.getNom() != null) existingPlant.setNom(plantDTO.getNom());
+        if (plantDTO.getPoint_de_vie() != null) existingPlant.setPointDeVie(plantDTO.getPoint_de_vie());
+        if (plantDTO.getAttaque_par_seconde() != null) existingPlant.setAttaqueParSeconde(plantDTO.getAttaque_par_seconde());
+        if (plantDTO.getDegat_attaque() != null) existingPlant.setDegatAttaque(plantDTO.getDegat_attaque());
+        if (plantDTO.getCout() != null) existingPlant.setCout(plantDTO.getCout());
+        if (plantDTO.getSoleil_par_seconde() != null) existingPlant.setSoleilParSeconde(plantDTO.getSoleil_par_seconde());
+        if (plantDTO.getEffet() != null) existingPlant.setEffet(plantDTO.getEffet());
+        if (plantDTO.getChemin_image() != null) existingPlant.setCheminImage(plantDTO.getChemin_image());
+
+        // Conserver l'ID original
+        existingPlant.setIdPlante(id);
+
+        // Sauvegarder la plante mise à jour
+        Plant updatedPlant = plantService.savePlant(existingPlant);
         return ResponseEntity.ok(PlantDTOMapper.toDTO(updatedPlant));
     }
 

@@ -27,15 +27,15 @@ public class ZombieController {
     /**
      * Endpoint de validation du format.
      */
-    @PostMapping("/validation")
-    public ResponseEntity<String> validateZombieFormat(@RequestBody ZombieDTO zombieDTO) {
-        Zombie zombie = ZombieDTOMapper.toModel(zombieDTO);
-        if (zombieService.validateZombieFormat(zombie)) {
-            return ResponseEntity.ok("Format de zombie valide");
-        } else {
-            return ResponseEntity.badRequest().body("Format de zombie invalide");
-        }
-    }
+//    @GetMapping("/validation")
+//    public ResponseEntity<String> validateZombieFormat(@RequestBody ZombieDTO zombieDTO) {
+//        Zombie zombie = ZombieDTOMapper.toModel(zombieDTO);
+//        if (zombieService.validateZombieFormat(zombie)) {
+//            return ResponseEntity.ok("Format de zombie valide");
+//        } else {
+//            return ResponseEntity.badRequest().body("Format de zombie invalide");
+//        }
+//    }
 
     /**
      * Récupère tous les zombies.
@@ -87,18 +87,31 @@ public class ZombieController {
      */
     @PutMapping("/{id}")
     public ResponseEntity<ZombieDTO> updateZombie(@PathVariable("id") int id, @RequestBody ZombieDTO zombieDTO) {
-        Zombie zombie = ZombieDTOMapper.toModel(zombieDTO);
+        // Récupérer d'abord le zombie existant
+        Optional<Zombie> existingZombieOpt = zombieService.getZombieById(id);
 
-        if (!zombieService.validateZombieFormat(zombie)) {
-            return ResponseEntity.badRequest().build();
-        }
-
-        if (zombieService.getZombieById(id).isEmpty()) {
+        if (existingZombieOpt.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
-        zombie.setIdZombie(id);
-        Zombie updatedZombie = zombieService.saveZombie(zombie);
+        Zombie existingZombie = existingZombieOpt.get();
+
+        // Mettre à jour seulement les champs non-null du DTO reçu
+        if (zombieDTO.getNom() != null) existingZombie.setNom(zombieDTO.getNom());
+        if (zombieDTO.getPoint_de_vie() != null) existingZombie.setPointDeVie(zombieDTO.getPoint_de_vie());
+        if (zombieDTO.getAttaque_par_seconde() != null) existingZombie.setAttaqueParSeconde(zombieDTO.getAttaque_par_seconde());
+        if (zombieDTO.getDegat_attaque() != null) existingZombie.setDegatAttaque(zombieDTO.getDegat_attaque());
+        if (zombieDTO.getVitesse_de_deplacement() != null) existingZombie.setVitesseDeDeplacement(zombieDTO.getVitesse_de_deplacement());
+        if (zombieDTO.getChemin_image() != null) existingZombie.setCheminImage(zombieDTO.getChemin_image());
+
+        // id_map peut être null ou non, gérer les deux cas
+        existingZombie.setIdMap(zombieDTO.getId_map());
+
+        // Conserver l'ID original
+        existingZombie.setIdZombie(id);
+
+        // Sauvegarder le zombie mis à jour
+        Zombie updatedZombie = zombieService.saveZombie(existingZombie);
         return ResponseEntity.ok(ZombieDTOMapper.toDTO(updatedZombie));
     }
 

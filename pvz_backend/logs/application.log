@@ -4,4 +4,3 @@
 2025-04-06 19:47:00.251 [main] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcher'
 2025-04-06 19:47:00.630 [main] INFO  o.s.v.b.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
 2025-04-06 19:47:00.672 [main] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 419 ms
-2025-04-06 19:47:07.879 [http-nio-8080-exec-3] INFO  c.e.api.controller.ReportController - GET /reports/1 appelé
