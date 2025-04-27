@@ -15,6 +15,7 @@ public class DatabaseConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/pvz");
+        // utilisateur perso et mot de passe
         dataSource.setUsername("lucasepf");
         dataSource.setPassword("lucasEPF25!");
 
@@ -24,7 +25,6 @@ public class DatabaseConfig {
             System.out.println("✓ Connexion à la base de données réussie");
         } catch (SQLException e) {
             System.err.println("✗ Échec de connexion à la base de données: " + e.getMessage());
-            // Vous pourriez également logger l'erreur ou lancer une exception personnalisée
         }
 
         return dataSource;

@@ -20,37 +20,36 @@ public class MapService {
     }
 
     /**
-     * Récupère toutes les maps.
+     * Récupère toutes les maps
      */
     public List<Map> getAllMaps() {
         return mapRepository.findAll();
     }
 
     /**
-     * Récupère une map par son ID.
+     * Récupère une map par son id
      */
     public Optional<Map> getMapById(int id) {
         return mapRepository.findById(id);
     }
 
     /**
-     * Sauvegarde une map (création ou mise à jour).
+     * Sauvegarde une map (création ou mise à jour)
      */
     public Map saveMap(Map map) {
         return mapRepository.save(map);
     }
 
     /**
-     * Supprime une map par son ID.
-     *
-     * @return false si la map est référencée par des zombies
+     * Supprime une map par son id
+     * retourne false si la map est référencée par des zombies
      */
     public boolean deleteMap(int id) {
         return mapRepository.deleteById(id);
     }
 
     /**
-     * Valide le format d'une map.
+     * Valide le format d'une map
      */
     public boolean validateMapFormat(Map map) {
         return map != null

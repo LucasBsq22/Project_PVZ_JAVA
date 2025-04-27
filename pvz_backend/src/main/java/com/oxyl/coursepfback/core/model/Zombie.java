@@ -10,7 +10,7 @@ public class Zombie {
     private String cheminImage;
     private Integer idMap;
 
-    // Getters and Setters
+    // Getters et Setters
     public Integer getIdZombie() {
         return idZombie;
     }
@@ -55,9 +55,7 @@ public class Zombie {
         return vitesseDeDeplacement;
     }
 
-    public void setVitesseDeDeplacement(Double vitesseDeDeplacement) {
-        this.vitesseDeDeplacement = vitesseDeDeplacement;
-    }
+    public void setVitesseDeDeplacement(Double vitesseDeDeplacement) {this.vitesseDeDeplacement = vitesseDeDeplacement;}
 
     public String getCheminImage() {
         return cheminImage;

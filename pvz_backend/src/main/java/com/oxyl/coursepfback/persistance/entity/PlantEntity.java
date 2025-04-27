@@ -1,7 +1,7 @@
 package com.oxyl.coursepfback.persistance.entity;
 
 /**
- * Entité qui représente une ligne de la table Plante dans la base de données.
+ * Entité qui représente une ligne de la table Plante dans la bdd
  */
 public class PlantEntity {
     private Integer idPlante;

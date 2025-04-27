@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Controller REST pour les endpoints liés aux plantes.
+ * Controller REST pour les endpoints liés aux plantes
  */
 @RestController
 @RequestMapping("/plantes")
@@ -25,22 +25,7 @@ public class PlantController {
     }
 
     /**
-     * Endpoint de validation du format.
-     */
-//    @GetMapping("/validation")
-//    public ResponseEntity<String> validateAllPlantsFromDB() {
-//        List<Plant> plants = plantService.getAllPlants();
-//        for (Plant plant : plants) {
-//            if (!plantService.validatePlantFormat(plant)) {
-//                return ResponseEntity.badRequest().body("Certaines plantes ont un format invalide");
-//            }
-//        }
-//        return ResponseEntity.ok("Toutes les plantes sont valides");
-//    }
-
-
-    /**
-     * Récupère toutes les plantes.
+     * Récupère toutes les plantes
      */
     @GetMapping
     public ResponseEntity<List<PlantDTO>> getAllPlants() {
@@ -50,7 +35,7 @@ public class PlantController {
     }
 
     /**
-     * Récupère une plante par son ID.
+     * Récupère une plante par son id
      */
     @GetMapping("/{id}")
     public ResponseEntity<PlantDTO> getPlantById(@PathVariable("id") int id) {
@@ -60,7 +45,7 @@ public class PlantController {
     }
 
     /**
-     * Crée une nouvelle plante.
+     * Crée une nouvelle plante
      */
     @PostMapping
     public ResponseEntity<PlantDTO> createPlant(@RequestBody PlantDTO plantDTO) {
@@ -75,7 +60,7 @@ public class PlantController {
     }
 
     /**
-     * Met à jour une plante existante.
+     * Met à jour une plante existante
      */
     @PutMapping("/{id}")
     public ResponseEntity<PlantDTO> updatePlant(@PathVariable("id") int id, @RequestBody PlantDTO plantDTO) {
@@ -107,7 +92,7 @@ public class PlantController {
     }
 
     /**
-     * Supprime une plante.
+     * Supprime une plante par son id
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePlant(@PathVariable("id") int id) {

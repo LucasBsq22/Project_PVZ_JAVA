@@ -1,7 +1,7 @@
 package com.oxyl.coursepfback.persistance.entity;
 
 /**
- * Entité qui représente une ligne de la table Map dans la base de données.
+ * Entité qui représente une ligne de la table Map dans la bdd
  */
 public class MapEntity {
     private Integer idMap;

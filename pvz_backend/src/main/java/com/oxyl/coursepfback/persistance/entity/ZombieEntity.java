@@ -1,7 +1,7 @@
 package com.oxyl.coursepfback.persistance.entity;
 
 /**
- * Entité qui représente une ligne de la table Zombie dans la base de données.
+ * Entité qui représente une ligne de la table Zombie dans la bdd
  */
 public class ZombieEntity {
     private Integer idZombie;
@@ -62,9 +62,7 @@ public class ZombieEntity {
         return vitesseDeDeplacement;
     }
 
-    public void setVitesseDeDeplacement(Double vitesseDeDeplacement) {
-        this.vitesseDeDeplacement = vitesseDeDeplacement;
-    }
+    public void setVitesseDeDeplacement(Double vitesseDeDeplacement) {this.vitesseDeDeplacement = vitesseDeDeplacement;}
 
     public String getCheminImage() {
         return cheminImage;

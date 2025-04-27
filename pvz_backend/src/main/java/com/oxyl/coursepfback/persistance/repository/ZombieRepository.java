@@ -11,8 +11,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * Repository pour les zombies.
- * Fait le lien entre le domaine métier et la couche d'accès aux données.
+ * Fait le lien entre le domaine métier et la couche d'accès aux données
  */
 @Repository
 public class ZombieRepository {
@@ -24,7 +23,7 @@ public class ZombieRepository {
     }
 
     /**
-     * Récupère tous les zombies.
+     * Récupère tous les zombies
      */
     public List<Zombie> findAll() {
         List<ZombieEntity> entities = zombieDAO.findAll();
@@ -34,7 +33,7 @@ public class ZombieRepository {
     }
 
     /**
-     * Récupère un zombie par son ID.
+     * Récupère un zombie par son id
      */
     public Optional<Zombie> findById(int id) {
         Optional<ZombieEntity> entityOpt = zombieDAO.findById(id);
@@ -42,7 +41,7 @@ public class ZombieRepository {
     }
 
     /**
-     * Récupère les zombies par ID de map.
+     * Récupère les zombies par id de map
      */
     public List<Zombie> findByMapId(int mapId) {
         List<ZombieEntity> entities = zombieDAO.findByMapId(mapId);
@@ -52,7 +51,7 @@ public class ZombieRepository {
     }
 
     /**
-     * Sauvegarde un zombie (création ou mise à jour).
+     * Sauvegarde un zombie (création ou mise à jour)
      */
     public Zombie save(Zombie zombie) {
         ZombieEntity entity = ZombieEntityMapper.toEntity(zombie);
@@ -68,7 +67,7 @@ public class ZombieRepository {
     }
 
     /**
-     * Supprime un zombie par son ID.
+     * Supprime un zombie par son id
      */
     public boolean deleteById(int id) {
         return zombieDAO.deleteById(id);

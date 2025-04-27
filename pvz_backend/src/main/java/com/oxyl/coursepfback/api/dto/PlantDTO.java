@@ -2,6 +2,9 @@ package com.oxyl.coursepfback.api.dto;
 
 import com.oxyl.coursepfback.core.model.Plant;
 
+/**
+ * DTO pour les plantes, utilisé pour la communication avec le frontend.
+ */
 public class PlantDTO {
     private Integer id_plante;
     private String nom;

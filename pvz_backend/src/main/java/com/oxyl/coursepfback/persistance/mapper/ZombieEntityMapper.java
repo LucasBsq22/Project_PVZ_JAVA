@@ -4,12 +4,12 @@ import com.oxyl.coursepfback.persistance.entity.ZombieEntity;
 import com.oxyl.coursepfback.core.model.Zombie;
 
 /**
- * Mapper pour convertir entre ZombieEntity et Zombie.
+ * Mapper pour convertir entre ZombieEntity et Zombie
  */
 public class ZombieEntityMapper {
 
     /**
-     * Convertit une entité ZombieEntity en modèle Zombie.
+     * Convertit une entité ZombieEntity en modèle Zombie
      */
     public static Zombie toModel(ZombieEntity entity) {
         if (entity == null) {
@@ -30,7 +30,7 @@ public class ZombieEntityMapper {
     }
 
     /**
-     * Convertit un modèle Zombie en entité ZombieEntity.
+     * Convertit un modèle Zombie en entité ZombieEntity
      */
     public static ZombieEntity toEntity(Zombie model) {
         if (model == null) {

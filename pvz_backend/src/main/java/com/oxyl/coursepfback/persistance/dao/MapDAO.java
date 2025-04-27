@@ -37,14 +37,14 @@ public class MapDAO {
     }
 
     /**
-     * Récupère toutes les maps.
+     * Récupère toutes les maps
      */
     public List<MapEntity> findAll() {
         return jdbcTemplate.query("SELECT * FROM Map", rowMapper);
     }
 
     /**
-     * Récupère une map par son ID.
+     * Récupère une map par son id
      */
     public Optional<MapEntity> findById(int id) {
         try {
@@ -60,7 +60,7 @@ public class MapDAO {
     }
 
     /**
-     * Vérifie si une map est référencée par des zombies.
+     * Vérifie si une map est référencée par des zombies
      */
     public boolean isReferencedByZombies(int mapId) {
         Integer count = jdbcTemplate.queryForObject(
@@ -72,7 +72,7 @@ public class MapDAO {
     }
 
     /**
-     * Insère une nouvelle map.
+     * Insère une nouvelle map
      */
     public MapEntity insert(MapEntity entity) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -92,7 +92,7 @@ public class MapDAO {
     }
 
     /**
-     * Met à jour une map existante.
+     * Met à jour une map existante
      */
     public MapEntity update(MapEntity entity) {
         jdbcTemplate.update(
@@ -106,7 +106,7 @@ public class MapDAO {
     }
 
     /**
-     * Supprime une map par son ID.
+     * Supprime une map par son id
      */
     public boolean deleteById(int id) {
         int rowsAffected = jdbcTemplate.update("DELETE FROM Map WHERE id_map = ?", id);

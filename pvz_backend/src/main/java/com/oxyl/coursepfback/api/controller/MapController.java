@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Controller REST pour les endpoints liés aux maps.
+ * Controller REST pour les endpoints liés aux maps
  */
 @RestController
 @RequestMapping("/maps")
@@ -23,22 +23,8 @@ public class MapController {
     public MapController(MapService mapService) {
         this.mapService = mapService;
     }
-
     /**
-     * Endpoint de validation du format.
-     */
-//    @GetMapping("/validation")
-//    public ResponseEntity<String> validateMapFormat(@RequestBody MapDTO mapDTO) {
-//        Map map = MapDTOMapper.toModel(mapDTO);
-//        if (mapService.validateMapFormat(map)) {
-//            return ResponseEntity.ok("Format de map valide");
-//        } else {
-//            return ResponseEntity.badRequest().body("Format de map invalide");
-//        }
-//    }
-
-    /**
-     * Récupère toutes les maps.
+     * Récupère toutes les maps
      */
     @GetMapping
     public ResponseEntity<List<MapDTO>> getAllMaps() {
@@ -48,7 +34,7 @@ public class MapController {
     }
 
     /**
-     * Récupère une map par son ID.
+     * Récupère une map par son id
      */
     @GetMapping("/{id}")
     public ResponseEntity<MapDTO> getMapById(@PathVariable("id") int id) {
@@ -58,7 +44,7 @@ public class MapController {
     }
 
     /**
-     * Crée une nouvelle map.
+     * Crée une nouvelle map
      */
     @PostMapping
     public ResponseEntity<MapDTO> createMap(@RequestBody MapDTO mapDTO) {
@@ -73,7 +59,7 @@ public class MapController {
     }
 
     /**
-     * Met à jour une map existante.
+     * Met à jour une map existante
      */
     @PutMapping("/{id}")
     public ResponseEntity<MapDTO> updateMap(@PathVariable("id") int id, @RequestBody MapDTO mapDTO) {
@@ -100,7 +86,7 @@ public class MapController {
     }
 
     /**
-     * Supprime une map.
+     * Supprime une map par son id
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMap(@PathVariable("id") int id) {

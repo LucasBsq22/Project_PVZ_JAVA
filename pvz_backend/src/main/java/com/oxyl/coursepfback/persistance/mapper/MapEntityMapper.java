@@ -4,12 +4,12 @@ import com.oxyl.coursepfback.persistance.entity.MapEntity;
 import com.oxyl.coursepfback.core.model.Map;
 
 /**
- * Mapper pour convertir entre MapEntity et Map.
+ * Mapper pour convertir entre MapEntity et Map
  */
 public class MapEntityMapper {
 
     /**
-     * Convertit une entité MapEntity en modèle Map.
+     * Convertit une entité MapEntity en modèle Map
      */
     public static Map toModel(MapEntity entity) {
         if (entity == null) {
@@ -26,7 +26,7 @@ public class MapEntityMapper {
     }
 
     /**
-     * Convertit un modèle Map en entité MapEntity.
+     * Convertit un modèle Map en entité MapEntity
      */
     public static MapEntity toEntity(Map model) {
         if (model == null) {

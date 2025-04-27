@@ -11,8 +11,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * Repository pour les maps.
- * Fait le lien entre le domaine métier et la couche d'accès aux données.
+ * Fait le lien entre le domaine métier et la couche d'accès aux données
  */
 @Repository
 public class MapRepository {
@@ -24,7 +23,7 @@ public class MapRepository {
     }
 
     /**
-     * Récupère toutes les maps.
+     * Récupère toutes les maps
      */
     public List<Map> findAll() {
         List<MapEntity> entities = mapDAO.findAll();
@@ -34,7 +33,7 @@ public class MapRepository {
     }
 
     /**
-     * Récupère une map par son ID.
+     * Récupère une map par son id
      */
     public Optional<Map> findById(int id) {
         Optional<MapEntity> entityOpt = mapDAO.findById(id);
@@ -42,14 +41,14 @@ public class MapRepository {
     }
 
     /**
-     * Vérifie si une map est référencée par des zombies.
+     * Vérifie si une map est référencée par des zombies
      */
     public boolean isReferencedByZombies(int mapId) {
         return mapDAO.isReferencedByZombies(mapId);
     }
 
     /**
-     * Sauvegarde une map (création ou mise à jour).
+     * Sauvegarde une map (création ou mise à jour)
      */
     public Map save(Map map) {
         MapEntity entity = MapEntityMapper.toEntity(map);
@@ -65,7 +64,7 @@ public class MapRepository {
     }
 
     /**
-     * Supprime une map par son ID, seulement si elle n'est pas référencée par des zombies.
+     * Supprime une map par son ID, seulement si elle n'est pas référencée par des zombies
      */
     public boolean deleteById(int id) {
         if (isReferencedByZombies(id)) {

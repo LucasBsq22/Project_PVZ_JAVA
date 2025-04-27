@@ -15,7 +15,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * DAO pour l'accès aux données des plantes via JDBC.
+ * DAO pour l'accès aux données des plantes via JDBC
  */
 @Repository
 public class PlantDAO {
@@ -42,14 +42,14 @@ public class PlantDAO {
     }
 
     /**
-     * Récupère toutes les plantes.
+     * Récupère toutes les plantes
      */
     public List<PlantEntity> findAll() {
         return jdbcTemplate.query("SELECT * FROM Plante", rowMapper);
     }
 
     /**
-     * Récupère une plante par son ID.
+     * Récupère une plante par son id
      */
     public Optional<PlantEntity> findById(int id) {
         try {
@@ -65,7 +65,7 @@ public class PlantDAO {
     }
 
     /**
-     * Insère une nouvelle plante.
+     * Insère une nouvelle plante
      */
     public PlantEntity insert(PlantEntity entity) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -90,7 +90,7 @@ public class PlantDAO {
     }
 
     /**
-     * Met à jour une plante existante.
+     * Met à jour une plante existante
      */
     public PlantEntity update(PlantEntity entity) {
         jdbcTemplate.update(
@@ -109,7 +109,7 @@ public class PlantDAO {
     }
 
     /**
-     * Supprime une plante par son ID.
+     * Supprime une plante par son ID
      */
     public boolean deleteById(int id) {
         int rowsAffected = jdbcTemplate.update("DELETE FROM Plante WHERE id_plante = ?", id);

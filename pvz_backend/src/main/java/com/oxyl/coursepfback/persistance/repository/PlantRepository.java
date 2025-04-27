@@ -11,8 +11,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * Repository pour les plantes.
- * Fait le lien entre le domaine métier et la couche d'accès aux données.
+ * Fait le lien entre le domaine métier et la couche d'accès aux données
  */
 @Repository
 public class PlantRepository {
@@ -24,7 +23,7 @@ public class PlantRepository {
     }
 
     /**
-     * Récupère toutes les plantes.
+     * Récupère toutes les plantes
      */
     public List<Plant> findAll() {
         List<PlantEntity> entities = plantDAO.findAll();
@@ -34,7 +33,7 @@ public class PlantRepository {
     }
 
     /**
-     * Récupère une plante par son ID.
+     * Récupère une plante par son id
      */
     public Optional<Plant> findById(int id) {
         Optional<PlantEntity> entityOpt = plantDAO.findById(id);
@@ -42,7 +41,7 @@ public class PlantRepository {
     }
 
     /**
-     * Sauvegarde une plante (création ou mise à jour).
+     * Sauvegarde une plante (création ou mise à jour)
      */
     public Plant save(Plant plant) {
         PlantEntity entity = PlantEntityMapper.toEntity(plant);
@@ -58,7 +57,7 @@ public class PlantRepository {
     }
 
     /**
-     * Supprime une plante par son ID.
+     * Supprime une plante par son id
      */
     public boolean deleteById(int id) {
         return plantDAO.deleteById(id);

@@ -4,12 +4,12 @@ import com.oxyl.coursepfback.persistance.entity.PlantEntity;
 import com.oxyl.coursepfback.core.model.Plant;
 
 /**
- * Mapper pour convertir entre PlantEntity et Plant.
+ * Mapper pour convertir entre PlantEntity et Plant
  */
 public class PlantEntityMapper {
 
     /**
-     * Convertit une entité PlantEntity en modèle Plant.
+     * Convertit une entité PlantEntity en modèle Plant
      */
     public static Plant toModel(PlantEntity entity) {
         if (entity == null) {
@@ -31,7 +31,7 @@ public class PlantEntityMapper {
     }
 
     /**
-     * Convertit un modèle Plant en entité PlantEntity.
+     * Convertit un modèle Plant en entité PlantEntity
      */
     public static PlantEntity toEntity(Plant model) {
         if (model == null) {

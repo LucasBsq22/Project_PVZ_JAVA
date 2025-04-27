@@ -1,7 +1,7 @@
 package com.oxyl.coursepfback.core.model;
 
 public class Plant {
-    private Integer idPlante; // Changé de idPlant à idPlante
+    private Integer idPlante;
     private String nom;
     private Integer pointDeVie;
     private Double attaqueParSeconde;
@@ -11,24 +11,7 @@ public class Plant {
     private String effet;
     private String cheminImage;
 
-    // Constructeurs
-    public Plant() {}
-
-    public Plant(Integer idPlante, String nom, Integer pointDeVie, Double attaqueParSeconde,
-                 Integer degatAttaque, Integer cout, Double soleilParSeconde, String effet,
-                 String cheminImage) {
-        this.idPlante = idPlante; // Modifié
-        this.nom = nom;
-        this.pointDeVie = pointDeVie;
-        this.attaqueParSeconde = attaqueParSeconde;
-        this.degatAttaque = degatAttaque;
-        this.cout = cout;
-        this.soleilParSeconde = soleilParSeconde;
-        this.effet = effet;
-        this.cheminImage = cheminImage;
-    }
-
-    // Getters et Setters modifiés
+    // Getters et setters
     public Integer getIdPlante() { // Changé de getIdPlant à getIdPlante
         return idPlante;
     }
@@ -37,7 +20,6 @@ public class Plant {
         this.idPlante = idPlante;
     }
 
-    // Le reste des getters et setters reste inchangé
     public String getNom() {
         return nom;
     }

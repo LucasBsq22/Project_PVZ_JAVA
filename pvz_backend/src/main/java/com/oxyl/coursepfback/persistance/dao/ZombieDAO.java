@@ -15,7 +15,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * DAO pour l'accès aux données des zombies via JDBC.
+ * DAO pour l'accès aux données des zombies via JDBC
  */
 @Repository
 public class ZombieDAO {
@@ -41,14 +41,14 @@ public class ZombieDAO {
     }
 
     /**
-     * Récupère tous les zombies.
+     * Récupère tous les zombies
      */
     public List<ZombieEntity> findAll() {
         return jdbcTemplate.query("SELECT * FROM Zombie", rowMapper);
     }
 
     /**
-     * Récupère un zombie par son ID.
+     * Récupère un zombie par son id
      */
     public Optional<ZombieEntity> findById(int id) {
         try {
@@ -64,7 +64,7 @@ public class ZombieDAO {
     }
 
     /**
-     * Récupère les zombies par ID de map.
+     * Récupère les zombies par id de map
      */
     public List<ZombieEntity> findByMapId(int mapId) {
         return jdbcTemplate.query(
@@ -75,7 +75,7 @@ public class ZombieDAO {
     }
 
     /**
-     * Insère un nouveau zombie.
+     * Insère un nouveau zombie
      */
     public ZombieEntity insert(ZombieEntity entity) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -105,7 +105,7 @@ public class ZombieDAO {
     }
 
     /**
-     * Met à jour un zombie existant.
+     * Met à jour un zombie existant
      */
     public ZombieEntity update(ZombieEntity entity) {
         jdbcTemplate.update(
@@ -123,7 +123,7 @@ public class ZombieDAO {
     }
 
     /**
-     * Supprime un zombie par son ID.
+     * Supprime un zombie par son id
      */
     public boolean deleteById(int id) {
         int rowsAffected = jdbcTemplate.update("DELETE FROM Zombie WHERE id_zombie = ?", id);

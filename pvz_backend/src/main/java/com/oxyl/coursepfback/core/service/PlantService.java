@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Service pour la gestion des plantes.
+ * Service pour la gestion des plantes
  */
 @Service
 public class PlantService {
@@ -20,35 +20,35 @@ public class PlantService {
     }
 
     /**
-     * Récupère toutes les plantes.
+     * Récupère toutes les plantes
      */
     public List<Plant> getAllPlants() {
         return plantRepository.findAll();
     }
 
     /**
-     * Récupère une plante par son ID.
+     * Récupère une plante par son id
      */
     public Optional<Plant> getPlantById(int id) {
         return plantRepository.findById(id);
     }
 
     /**
-     * Sauvegarde une plante (création ou mise à jour).
+     * Sauvegarde une plante (création ou mise à jour)
      */
     public Plant savePlant(Plant plant) {
         return plantRepository.save(plant);
     }
 
     /**
-     * Supprime une plante par son ID.
+     * Supprime une plante par son id
      */
     public boolean deletePlant(int id) {
         return plantRepository.deleteById(id);
     }
 
     /**
-     * Valide le format d'une plante.
+     * Valide le format d'une plante
      */
     public boolean validatePlantFormat(Plant plant) {
         return plant != null

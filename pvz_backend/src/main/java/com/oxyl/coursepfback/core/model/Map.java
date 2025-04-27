@@ -6,7 +6,7 @@ public class Map {
     private Integer colonne;
     private String cheminImage;
 
-    // Getters and Setters
+    // Getters et Setters
     public Integer getIdMap() {
         return idMap;
     }

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Service pour la gestion des zombies.
+ * Service pour la gestion des zombies
  */
 @Service
 public class ZombieService {
@@ -20,42 +20,42 @@ public class ZombieService {
     }
 
     /**
-     * Récupère tous les zombies.
+     * Récupère tous les zombies
      */
     public List<Zombie> getAllZombies() {
         return zombieRepository.findAll();
     }
 
     /**
-     * Récupère un zombie par son ID.
+     * Récupère un zombie par son id
      */
     public Optional<Zombie> getZombieById(int id) {
         return zombieRepository.findById(id);
     }
 
     /**
-     * Récupère les zombies par ID de map.
+     * Récupère les zombies par id de map.
      */
     public List<Zombie> getZombiesByMapId(int mapId) {
         return zombieRepository.findByMapId(mapId);
     }
 
     /**
-     * Sauvegarde un zombie (création ou mise à jour).
+     * Sauvegarde un zombie (création ou mise à jour)
      */
     public Zombie saveZombie(Zombie zombie) {
         return zombieRepository.save(zombie);
     }
 
     /**
-     * Supprime un zombie par son ID.
+     * Supprime un zombie par son id
      */
     public boolean deleteZombie(int id) {
         return zombieRepository.deleteById(id);
     }
 
     /**
-     * Valide le format d'un zombie.
+     * Valide le format d'un zombie
      */
     public boolean validateZombieFormat(Zombie zombie) {
         return zombie != null
@@ -65,6 +65,6 @@ public class ZombieService {
                 && zombie.getDegatAttaque() != null && zombie.getDegatAttaque() >= 0
                 && zombie.getVitesseDeDeplacement() != null && zombie.getVitesseDeDeplacement() > 0
                 && zombie.getCheminImage() != null && !zombie.getCheminImage().isEmpty();
-        // Notez que idMap peut être null, donc nous ne le validons pas
+                //idMap peut être null, donc pas de validation
     }
 }

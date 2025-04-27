@@ -25,20 +25,7 @@ public class ZombieController {
     }
 
     /**
-     * Endpoint de validation du format.
-     */
-//    @GetMapping("/validation")
-//    public ResponseEntity<String> validateZombieFormat(@RequestBody ZombieDTO zombieDTO) {
-//        Zombie zombie = ZombieDTOMapper.toModel(zombieDTO);
-//        if (zombieService.validateZombieFormat(zombie)) {
-//            return ResponseEntity.ok("Format de zombie valide");
-//        } else {
-//            return ResponseEntity.badRequest().body("Format de zombie invalide");
-//        }
-//    }
-
-    /**
-     * Récupère tous les zombies.
+     * Récupère tous les zombies
      */
     @GetMapping
     public ResponseEntity<List<ZombieDTO>> getAllZombies() {
@@ -48,7 +35,7 @@ public class ZombieController {
     }
 
     /**
-     * Récupère un zombie par son ID.
+     * Récupère un zombie par son id
      */
     @GetMapping("/{id}")
     public ResponseEntity<ZombieDTO> getZombieById(@PathVariable("id") int id) {
@@ -58,7 +45,7 @@ public class ZombieController {
     }
 
     /**
-     * Récupère les zombies par ID de map.
+     * Récupère les zombies par id de map
      */
     @GetMapping("/map/{mapId}")
     public ResponseEntity<List<ZombieDTO>> getZombiesByMapId(@PathVariable("mapId") int mapId) {
@@ -68,7 +55,7 @@ public class ZombieController {
     }
 
     /**
-     * Crée un nouveau zombie.
+     * Crée un nouveau zombie
      */
     @PostMapping
     public ResponseEntity<ZombieDTO> createZombie(@RequestBody ZombieDTO zombieDTO) {
@@ -83,7 +70,7 @@ public class ZombieController {
     }
 
     /**
-     * Met à jour un zombie existant.
+     * Met à jour un zombie existant
      */
     @PutMapping("/{id}")
     public ResponseEntity<ZombieDTO> updateZombie(@PathVariable("id") int id, @RequestBody ZombieDTO zombieDTO) {
@@ -116,7 +103,7 @@ public class ZombieController {
     }
 
     /**
-     * Supprime un zombie.
+     * Supprime un zombie par son id
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteZombie(@PathVariable("id") int id) {
