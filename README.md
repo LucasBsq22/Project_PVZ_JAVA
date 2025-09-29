@@ -1,6 +1,6 @@
 # Plants vs Zombies - Backend
 
-Ce projet est le backend d'un jeu de type Plants vs Zombies, développé en Java avec Spring MVC et une architecture en couches. Ce README documente l'implémentation du backend, son architecture et son fonctionnement.
+Ce projet est le backend d'un jeu de type Plants vs Zombies, développé en Java avec Spring MVC utilisant une architecture en couches. Ce README documente l'implémentation du backend, son architecture et son fonctionnement.
 
 ## Structure du projet
 
@@ -253,4 +253,4 @@ echo "Redéploiement terminé!"
 - Les requêtes SQL utilisent des requêtes préparées pour éviter les injections SQL
 - La configuration CORS est restreinte à l'origine du frontend uniquement
 
-# Lucas Bosq MIN1
+# Lucas Bosq pour le cours de Java - EPF 4ème année
